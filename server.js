@@ -12,10 +12,13 @@ server.use(express.json());
 
 // Modules ----------------------------------------------------//
 const weatherModule = require('./Modules/weather');
+const newsModule = require('./Modules/news');
 
 // Routes ----------------------------------------------------//
 server.get('/', homeHandler);
 server.get('/getWeather', weatherModule.getWeatherHandler);
+server.get('/getLatestNews', newsModule.getLatestNewsHandler);
+server.get('/getSearchedNews', newsModule.getSearchedNewsHandler);
 server.get('*', elseHandler);
 
 // http://localhost:3001
