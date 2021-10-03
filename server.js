@@ -14,12 +14,14 @@ server.use(express.json());
 const weatherModule = require('./Modules/weather');
 const movieModule = require('./Modules/movies');
 const inspiringExpressionsModule = require('./Modules/inspiringExpressions');
+const adviceModule = require('./Modules/advice');
 
 // Routes ----------------------------------------------------//
 server.get('/', homeHandler);
 server.get('/getWeather', weatherModule.getWeatherHandler);
 server.get('/getMovie', movieModule.getMovieHandler);
 server.get('/getInspiringExpressions', inspiringExpressionsModule.getInspiringExpressionsHandler);
+server.get('/getAdvice', adviceModule.getAdviceHandler);
 server.get('*', elseHandler);
 
 // http://localhost:3001
