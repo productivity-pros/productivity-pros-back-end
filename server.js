@@ -12,23 +12,25 @@ server.use(express.json());
 
 // Modules ----------------------------------------------------//
 const weatherModule = require('./Modules/weather');
+const movieModule = require('./Modules/movies');
 
 // Routes ----------------------------------------------------//
 server.get('/', homeHandler);
 server.get('/getWeather', weatherModule.getWeatherHandler);
+server.get('/getMovie', movieModule.getMovieHandler);
 server.get('*', elseHandler);
 
 // http://localhost:3001
 function homeHandler(req, res) {
-    res.send('Server Active')
+  res.send('Server Active');
 }
 
 // http://localhost:3001/<Anything>
 function elseHandler(req, res) {
-    res.status(404).send('route not found');
+  res.status(404).send('route not found');
 }
 
 // Listener ----------------------//
 server.listen(PORT, () => {
-    console.log(`Listening on PORT ${PORT}`)
-})
+  console.log(`Listening on PORT ${PORT}`);
+});
