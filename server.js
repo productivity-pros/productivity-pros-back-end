@@ -12,6 +12,7 @@ server.use(express.json());
 
 // Modules ----------------------------------------------------//
 const weatherModule = require('./Modules/weather');
+const newsModule = require('./Modules/news');
 const movieModule = require('./Modules/movies');
 const inspiringExpressionsModule = require('./Modules/inspiringExpressions');
 const adviceModule = require('./Modules/advice');
@@ -21,6 +22,8 @@ const funFactsHandlerModule = require('./Modules/funFacts');
 // Routes ----------------------------------------------------//
 server.get('/', homeHandler);
 server.get('/getWeather', weatherModule.getWeatherHandler);
+server.get('/getLatestNews', newsModule.getLatestNewsHandler);
+server.get('/getSearchedNews', newsModule.getSearchedNewsHandler);
 server.get('/getMovie', movieModule.getMovieHandler);
 server.get('/getInspiringExpressions', inspiringExpressionsModule.getInspiringExpressionsHandler);
 server.get('/getAdvice', adviceModule.getAdviceHandler);
