@@ -25,7 +25,7 @@ function getMovieHandler(req, res) {
     element.data.results.forEach(ind => {
       newObjectArray.push(new Movie(ind))
     });
-    res.send(newObjectArray.slice(0, 6));
+    res.send(newObjectArray.slice(0, 4));
   })
 }
 module.exports = { getMovieHandler };
