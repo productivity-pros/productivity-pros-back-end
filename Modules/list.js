@@ -14,9 +14,9 @@ const listSchema = new mongoose.Schema({
 });
 
 // Model --------------------------------------------//
-const listModel = mongoose.model('note', listSchema);
+const listModel = mongoose.model('list', listSchema);
 
-// localhost:3001/addnote
+// localhost:3001/addlist
 function addListHandler(req, res) {
     let { name, category, email } = req.body;
     console.log(name, category, email);
@@ -37,7 +37,7 @@ function addListHandler(req, res) {
     })
 }
 
-// localhost:3001/getnote
+// localhost:3001/getlists
 function getListHandler(req, res) {
     let { email } = req.query;
     // console.log(email);
@@ -52,7 +52,7 @@ function getListHandler(req, res) {
     })
 }
 
-// localhost:3001/updatenote
+// localhost:3001/updatelist
 function updateListHandler(req, res) {
     let { name, category, email, _id } = req.body;
     if (category === 'trash') {
