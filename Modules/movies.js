@@ -14,6 +14,11 @@ class Movie {
 
   }
 }
+function Random(props) {
+  var maxNumber = 45;
+  var randomNumber = Math.floor((Math.random() * maxNumber) + 1);
+  return <div>{randomNumber}</div>;
+}
 // localhost:3001/getMovie?query=<name Of MOvie>
 function getMovieHandler(req, res) {
   let {query} = req.query;
