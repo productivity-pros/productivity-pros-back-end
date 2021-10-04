@@ -18,7 +18,6 @@ const inspiringExpressionsModule = require('./Modules/inspiringExpressions');
 const adviceModule = require('./Modules/advice');
 const funFactsHandlerModule = require('./Modules/funFacts');
 
-
 // Routes ----------------------------------------------------//
 server.get('/', homeHandler);
 server.get('/getWeather', weatherModule.getWeatherHandler);

@@ -8,20 +8,19 @@ class Weather {
     this.description = element.weather.description;
   }
 }
-// localhost:3001/getWeather?city=amman
+// localhost:3001/getWeather?city=Amman
 function getWeatherHandler(req, res) {
   let { city } = req.query;
-  const weatherURL = `https://api.weatherbit.io/v2.0/forecast/daily?key=${process.env.WEATHER_API_KEY}&city=${city}`;
+  let weatherURL = `https://api.weatherbit.io/v2.0/forecast/daily?key=${process.env.WEATHER_API_KEY}&city=${city}`;
 
   if (cacheMemory[city] !== undefined) {
     res.send(cacheMemory[city]);
   }
   else {
     try {
-      axios.get(url).then(resulets => {
+      axios.get(weatherURL).then(results => {
 
-        let newWeatherArray = resulets.data.data.map(element => {
-          console.log(newWeatherArray);
+        let newWeatherArray = results.data.data.slice(0, 6).map(element => {
           return new Weather(element)
         });
         cacheMemory[city] = newWeatherArray;
