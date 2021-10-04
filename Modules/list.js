@@ -7,26 +7,26 @@ const axios = require('axios');
 mongoose.connect('mongodb://localhost:27017/testDB');
 
 // Schema --------------------------------------------//
-const noteSchema = new mongoose.Schema({
+const listSchema = new mongoose.Schema({
     name: String,
     category: String,
     email: String
 });
 
 // Model --------------------------------------------//
-const noteModel = mongoose.model('note', noteSchema);
+const listModel = mongoose.model('note', listSchema);
 
 // localhost:3001/addnote
-function addNoteHandler(req, res) {
+function addListHandler(req, res) {
     let { name, category, email } = req.body;
     console.log(name, category, email);
 
-    noteModel.create({
+    listModel.create({
         name,
         category,
         email
     }).then(() => {
-        noteModel.find({ email }, (error, data) => {
+        listModel.find({ email }, (error, data) => {
             if (error) {
                 console.log('error in getting data', error);
             } else {
@@ -38,11 +38,11 @@ function addNoteHandler(req, res) {
 }
 
 // localhost:3001/getnote
-function getNoteHandler(req, res) {
+function getListHandler(req, res) {
     let { email } = req.query;
     // console.log(email);
 
-    noteModel.find({ email }, (error, data) => {
+    listModel.find({ email }, (error, data) => {
         if (error) {
             console.log('error in getting data', error);
         } else {
@@ -53,11 +53,11 @@ function getNoteHandler(req, res) {
 }
 
 // localhost:3001/updatenote
-function updateNoteHandler(req, res) {
+function updateListHandler(req, res) {
     let { name, category, email, _id } = req.body;
     if (category === 'trash') {
-        noteModel.deleteOne({ _id }).then(() => {
-            noteModel.find({ email }, function (error, data) {
+        listModel.deleteOne({ _id }).then(() => {
+            listModel.find({ email }, function (error, data) {
                 if (error) {
                     console.log('error in getting data', error)
                 } else {
@@ -67,12 +67,12 @@ function updateNoteHandler(req, res) {
             })
         })
     } else {
-        noteModel.findByIdAndUpdate(_id, { name, category }, (error, updatedData) => {
+        listModel.findByIdAndUpdate(_id, { name, category }, (error, updatedData) => {
             if (error) {
                 console.log('error in updating')
             }
             else {
-                noteModel.find({ email }, function (error, data) {
+                listModel.find({ email }, function (error, data) {
                     if (error) {
                         console.log('error in getting data', error)
                     } else {
@@ -84,7 +84,7 @@ function updateNoteHandler(req, res) {
     }
 }
 
-module.exports = { addNoteHandler, updateNoteHandler, getNoteHandler };
+module.exports = { addListHandler, updateListHandler, getListHandler };
 
 // .then(() => {
 //     bookModel.find({},(error,data) => {
