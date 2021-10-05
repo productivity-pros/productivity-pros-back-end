@@ -4,8 +4,12 @@ let cacheMemory = {};
 
 class Weather {
   constructor(element) {
+    this.temp = element.temp;
+    this.low_temp = element.low_temp;
+    this.max_temp = element.max_temp;
     this.date = element.valid_date;
     this.description = element.weather.description;
+    this.icon = `https://www.weatherbit.io/static/img/icons/${element.weather.icon}.png`;
   }
 }
 // localhost:3001/getWeather?city=Amman
