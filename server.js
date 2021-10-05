@@ -14,6 +14,7 @@ server.use(express.json());
 const weatherModule = require('./Modules/weather');
 const newsModule = require('./Modules/news');
 const listModule = require('./Modules/list');
+const noteModule = require('./Modules/notes');
 
 // Routes ----------------------------------------------------//
 server.get('/', homeHandler);
@@ -23,6 +24,10 @@ server.get('/getSearchedNews', newsModule.getSearchedNewsHandler);
 server.post('/addlist', listModule.addListHandler);
 server.put('/updatelist', listModule.updateListHandler);
 server.get('/getlists', listModule.getListHandler);
+server.post('/addnote', noteModule.addNoteHandler);
+server.put('/updatenote', noteModule.updateNoteHandler);
+server.get('/getnotes', noteModule.getNoteHandler);
+server.delete('/deletenote', noteModule.deleteNoteHandler);
 server.get('*', elseHandler);
 
 // http://localhost:3001
