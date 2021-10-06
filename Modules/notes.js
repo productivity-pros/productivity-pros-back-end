@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const axios = require('axios');
 
 // Database connection --------------------------------------------//
-mongoose.connect('mongodb://localhost:27017/testDB');
+mongoose.connect(process.env.MONGO_SERVER);
 
 // Schema --------------------------------------------//
 const noteSchema = new mongoose.Schema({
